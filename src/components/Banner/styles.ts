@@ -30,6 +30,9 @@ export const BannerFirstContent = styled.div`
 `;
 
 export const BannerSecondContent = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
     span {
         max-width: 29.75rem;
         max-height: 22.5rem;
