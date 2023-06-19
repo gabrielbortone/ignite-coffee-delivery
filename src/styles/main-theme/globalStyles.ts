@@ -10,3 +10,11 @@ export const DefaultContainer = styled.main`
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 `;
+
+import { createGlobalStyle } from 'styled-components'
+
+export const GlobalStyle = createGlobalStyle`
+  body {
+    background: ${props => props.theme['background']};
+  }
+`

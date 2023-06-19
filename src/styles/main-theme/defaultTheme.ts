@@ -14,7 +14,7 @@ export const defaultTheme = {
     'base-input': '#EDEDED',
     'base-card': '#F3F2F2',
     'background': '#FAFAFA',
-    'white': '#FFFFF',
+    'white': '#FFFFFF',
     'font-secondary': "'Baloo 2', cursive",
     'font-primary': "'Roboto', sans-serif"
 }

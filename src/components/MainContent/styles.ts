@@ -12,6 +12,8 @@ export const TituloCafes = styled.h1`
 export const SessaoCafes = styled.section`
     display: flex;
     width: 100%;
+    flex-direction: column;
+    row-gap: 0.8rem;
 `;
 
 export const ContainerCafes = styled.div`
