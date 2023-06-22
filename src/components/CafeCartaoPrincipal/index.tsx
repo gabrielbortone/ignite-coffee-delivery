@@ -2,7 +2,7 @@ import { useState } from "react";
 import { CafeCartaoPrincipalDescricao, CafeCartaoPrincipalImagemContainer, CafeCartaoPrincipalSpan,
      CafeCartaoPrincipalSpanConntainerItens,
      CafeCartaoPrincipalTipoCafeContainer,
-     CafeCartaoPrincipalTipoCafeSpan, CafeCartaoPrincipalTitulo, CafePrincipalContainerFooter, CafePrincipalFooterBotaoComprar, CafePrincipalPrecoContainer, CafePrincipalQuantidadeContainer } from "./styles";
+     CafeCartaoPrincipalTipoCafeSpan, CafeCartaoPrincipalTitulo, CafePrincipalContainerFooter, CafePrincipalFooterBotaoComprar, CafePrincipalPrecoContainer, CafePrincipalQuantidadeContainer, CafePrincipalQuantidadeSpan, CafePrincipalQuantidadeSpanNumero } from "./styles";
 import { Plus, Minus, ShoppingCartSimple } from "@phosphor-icons/react";
 import { useTheme } from "styled-components";
 
@@ -43,9 +43,13 @@ export default function CafeCartaoPrincipal({titulo, descricao, imagem, tipoCafe
                         <h3><span>{'R$'}</span>{preco.toLocaleString('pt-br', {style: 'decimal', minimumIntegerDigits: 1, minimumFractionDigits: 2, maximumFractionDigits: 2})}</h3>
                     </CafePrincipalPrecoContainer>
                     <CafePrincipalQuantidadeContainer>
-                        <Minus size={16} color={theme['purple']}/>
-                        {quantidade}
-                        <Plus size={16} color={theme['purple']}/>
+                        <CafePrincipalQuantidadeSpan>
+                            <Minus size={16} color={theme['purple']}/>
+                        </CafePrincipalQuantidadeSpan>
+                        <CafePrincipalQuantidadeSpanNumero>{quantidade}</CafePrincipalQuantidadeSpanNumero>
+                        <CafePrincipalQuantidadeSpan>
+                            <Plus size={16} color={theme['purple']}/>
+                        </CafePrincipalQuantidadeSpan>
                     </CafePrincipalQuantidadeContainer>
                     <CafePrincipalFooterBotaoComprar>
                         <ShoppingCartSimple size={24} color={theme['white']}/>

@@ -18,6 +18,7 @@ export const SessaoCafes = styled.section`
 
 export const ContainerCafes = styled.div`
     display: grid;
-    grid-template-columns: repeat(1fr,4);
-    grid-template-rows: repeat(1fr,4);
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: repeat(4,1fr);
+    row-gap: 2.5rem;
 `;

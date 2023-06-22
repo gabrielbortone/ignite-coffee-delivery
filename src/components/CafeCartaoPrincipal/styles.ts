@@ -11,7 +11,7 @@ export const CafeCartaoPrincipalSpan = styled.span`
 `;
 
 export const CafeCartaoPrincipalSpanConntainerItens = styled.div`
-    margin-top: -0.5rem;
+    margin-top: -0.8rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -65,7 +65,7 @@ export const CafePrincipalContainerFooter = styled.div`
     grid-template-columns: 1fr 1fr 1fr;
     justify-content: center;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.8rem;
 `;
 
 export const CafePrincipalPrecoContainer = styled.span`
@@ -88,9 +88,31 @@ export const CafePrincipalPrecoContainer = styled.span`
 export const CafePrincipalQuantidadeContainer = styled.span`
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    margin-left: 0.7rem;
-    margin-right: 0.7rem;
+`;
+
+
+
+export const CafePrincipalQuantidadeSpan = styled.span`
+    background: ${props=> props.theme['base-button']};
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.1rem;
+    padding: 0rem 0.1rem;
+`;
+
+export const CafePrincipalQuantidadeSpanNumero = styled.span`
+    background: ${props=> props.theme['base-button']};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.1rem;
+    width: 1rem;
+    padding: 0rem 0.1rem;
 `;
 
 export const CafePrincipalFooterBotaoComprar = styled.button`
