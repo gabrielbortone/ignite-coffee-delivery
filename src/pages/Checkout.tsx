@@ -1,5 +1,10 @@
+import PainelEndereco from "../components/PainelEndereco";
+import { CheckoutContainer } from "./styles/checkoutTheme";
+
 export default function Checkout(){
     return (
-        <h1>Checkout</h1>
+        <CheckoutContainer>
+            <PainelEndereco />
+        </CheckoutContainer>
     )
 }
