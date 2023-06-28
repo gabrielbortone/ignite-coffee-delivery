@@ -1,12 +1,15 @@
 import { useTheme } from "styled-components";
-import { PainelEnderecoContainer, PainelEnderecoHeader, PainelEnderecoHeaderInputContainer, PainelEnderecoHeaderTextosContainer } from "./styles";
+import { PainelEnderecoContainer, PainelEnderecoHeader, PainelEnderecoHeaderInputContainer, PainelEnderecoHeaderTextosContainer, PainelEnderecoTituloHeader } from "./styles";
 import { MapPinLine } from "@phosphor-icons/react";
 
 export default function PainelEndereco(){
     const theme = useTheme();
+    
     if(theme){
         return (
-            <PainelEnderecoContainer>
+            <>
+                <PainelEnderecoTituloHeader>Complete seu pedido</PainelEnderecoTituloHeader> 
+                <PainelEnderecoContainer>
                 <PainelEnderecoHeader>
                         <MapPinLine size={30} color={theme['yellow-dark']} />
                         <PainelEnderecoHeaderTextosContainer>
@@ -33,6 +36,8 @@ export default function PainelEndereco(){
 
                 </PainelEnderecoHeaderInputContainer>
             </PainelEnderecoContainer>
+            </>
+            
         );
     }
     return <h1>ERROR!!!</h1>

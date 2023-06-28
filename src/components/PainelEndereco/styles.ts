@@ -9,9 +9,11 @@ export const PainelEnderecoContainer = styled.div`
 `;
 
 export const PainelEnderecoHeader = styled.div`
+    
     display: flex;
     flex-direction: row;
     gap: 0.5rem;
+    margin-top: -1.5rem;
     margin-left: 0.7rem;
     margin-right: 0.7rem;
     svg {
@@ -71,4 +73,12 @@ export const PainelEnderecoHeaderInputContainer = styled.section`
     }
 
 
+`;
+
+export const PainelEnderecoTituloHeader = styled.h3`
+    font-size: 1.25rem;
+    font-family: ${props=> props.theme['font-secondary']};
+    font-weight: 400;
+    color: ${props=> props.theme['base-label']};
+    line-height: 0.5;
 `;
