@@ -5,6 +5,7 @@ import { DefaultContainer, GlobalStyle } from "./styles/main-theme/globalStyles"
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Checkout from "./pages/Checkout";
+import PedidoConfirmado from "./pages/PedidoConfirmado";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home/>} />
             <Route path="/checkout" element={<Checkout/>} />
+            <Route path="/pedido-confirmadope" element={<PedidoConfirmado/>} />
           </Routes>
         </DefaultContainer>
       </BrowserRouter>
