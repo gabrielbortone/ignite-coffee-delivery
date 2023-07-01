@@ -5,7 +5,7 @@ export const PainelEnderecoContainer = styled.div`
     display: flex;
     flex-direction: column;
     width: 38rem;
-    padding: 2.5rem 0.5rem;
+    padding: 2.5rem 1.25rem;
 `;
 
 export const PainelEnderecoHeader = styled.div`
@@ -51,7 +51,7 @@ export const PainelEnderecoHeaderInputContainer = styled.section`
     margin-left: 0.7rem;
     margin-right: 0.7rem;
     max-width: 100%;
-
+    padding-bottom: 2rem;
     input {
         background: ${props=> props.theme['base-input']};
         font-size: 1.2rem;
@@ -81,4 +81,16 @@ export const PainelEnderecoTituloHeader = styled.h3`
     font-weight: 400;
     color: ${props=> props.theme['base-label']};
     line-height: 0.5;
+`;
+
+export const BotaoConfirmarPedidoCheckout = styled.button`
+    border: none;
+    background: ${props=> props.theme['yellow']};
+    color: ${props=> props.theme['white']};
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    font-family: ${props=> props.theme['font-primary']};
+    padding: 0.7rem 0.2rem;
+    margin: 1rem 1.5rem;
 `;

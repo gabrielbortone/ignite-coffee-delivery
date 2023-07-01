@@ -6,7 +6,8 @@ export const PainelPagamentoContainer = styled.section`
     flex-direction: column;
     margin-top: 0.8rem;
     width: 38rem;
-    padding: 0.8rem 0.5rem;
+    padding: 1.250rem;
+    max-width: 38rem;
 `;
 
 export const PainelPagamentoHeader = styled.div`
@@ -50,6 +51,7 @@ export const PainelPagamentoConteudoContainer = styled.div`
     align-items: stretch;
     border-radius: 30%;
     margin: 0 auto;
+    padding: 2rem 1rem;
 `;
 
 export const PainelPagamentoConteudoItem = styled.span`
