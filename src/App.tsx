@@ -16,7 +16,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home/>} />
             <Route path="/checkout" element={<Checkout/>} />
-            <Route path="/pedido-confirmadope" element={<PedidoConfirmado/>} />
+            <Route path="/pedido-confirmado" element={<PedidoConfirmado/>} />
           </Routes>
         </DefaultContainer>
       </BrowserRouter>
