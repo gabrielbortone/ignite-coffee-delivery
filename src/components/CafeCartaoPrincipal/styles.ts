@@ -103,6 +103,7 @@ export const CafePrincipalQuantidadeSpan = styled.span`
     justify-content: center;
     height: 2.1rem;
     padding: 0rem 0.1rem;
+    cursor: pointer;
 `;
 
 export const CafePrincipalQuantidadeSpanNumero = styled.span`
@@ -124,4 +125,5 @@ export const CafePrincipalFooterBotaoComprar = styled.button`
     width: 2.2rem;
     height: 2.2rem;
     border-radius: 8px;
+    cursor: pointer;
 `;

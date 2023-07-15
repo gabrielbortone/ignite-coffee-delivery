@@ -6,20 +6,23 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Checkout from "./pages/Checkout";
 import PedidoConfirmado from "./pages/PedidoConfirmado";
+import { VendasContextProvider } from "./contexts/VendasContext";
 
 function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
-      <BrowserRouter>
-        <DefaultContainer>
-          <Header />
-          <Routes>
-            <Route path="/" element={<Home/>} />
-            <Route path="/checkout" element={<Checkout/>} />
-            <Route path="/pedido-confirmado" element={<PedidoConfirmado/>} />
-          </Routes>
-        </DefaultContainer>
-      </BrowserRouter>
+      <VendasContextProvider>
+        <BrowserRouter>
+          <DefaultContainer>
+            <Header />
+            <Routes>
+              <Route path="/" element={<Home/>} />
+              <Route path="/checkout" element={<Checkout/>} />
+              <Route path="/pedido-confirmado" element={<PedidoConfirmado/>} />
+            </Routes>
+          </DefaultContainer>
+        </BrowserRouter>
+      </VendasContextProvider>
       <GlobalStyle />
     </ThemeProvider>
   )

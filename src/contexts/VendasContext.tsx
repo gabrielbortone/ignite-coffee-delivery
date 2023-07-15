@@ -1,6 +1,6 @@
 import { ReactNode, createContext, useState } from "react"
 
-interface CafeCarrinho {
+export interface CafeCarrinho {
     titulo: string
     descricao: string
     imagem: string
@@ -13,10 +13,29 @@ interface CarrinhoItem {
     quantidade: number
 }
 
+export interface EnderecoEntrega {
+    cep: string
+    rua: string
+    numero: string
+    complemento: string
+    bairro: string
+    cidade: string
+    uf: string
+}
+
+interface Pedido {
+    pedidoItens: CarrinhoItem[]
+    endereco: EnderecoEntrega
+}
+
+
 interface VendasContextType {
     adicionarNoCarrinho: (cafe: CafeCarrinho, quantidade: number) => void;
     removerDoCarrinho: (cafe: CafeCarrinho) => void;
     obterCarrinho: () => CarrinhoItem[];
+    finalizarPedido: (endereco: EnderecoEntrega) => void;
+    obterPedidoAtual: () => Pedido | undefined;
+    quantidadeItens: number;
 }
 
 interface VendasProviderProps {
@@ -28,6 +47,8 @@ export const VendasContext = createContext<VendasContextType>({} as VendasContex
 export function VendasContextProvider({children}: VendasProviderProps){
 
     const [carrinho , setCarrinho] = useState<CarrinhoItem[]>([]);
+    const [pedido, setPedido] = useState<Pedido>();
+    const [quantidadeItens, setQuantidadeItens] = useState<number>(0);
 
     function adicionarNoCarrinho(cafe: CafeCarrinho, quantidade: number){
         const novoItem: CarrinhoItem = { 
@@ -35,9 +56,12 @@ export function VendasContextProvider({children}: VendasProviderProps){
             quantidade
         }
         setCarrinho((state) => [...state, novoItem]);
+        setQuantidadeItens(carrinho.length+1);
     }
 
     function removerDoCarrinho(cafe: CafeCarrinho){
+        setQuantidadeItens(carrinho.length+1);
+
         return carrinho.filter((item)=> {
             return item.produto != cafe
         })
@@ -47,9 +71,20 @@ export function VendasContextProvider({children}: VendasProviderProps){
         return carrinho;
     }
 
+    function obterPedidoAtual(){
+        return pedido;
+    }
+
+    function finalizarPedido(endereco: EnderecoEntrega) {
+        setPedido({
+            endereco,
+            pedidoItens: carrinho
+        });
+    }
 
     return (
-        <VendasContext.Provider value={{adicionarNoCarrinho, obterCarrinho, removerDoCarrinho}}>
+        <VendasContext.Provider value={{adicionarNoCarrinho, obterCarrinho,
+         removerDoCarrinho, obterPedidoAtual, finalizarPedido, quantidadeItens}}>
             {children}
         </VendasContext.Provider>
     )
