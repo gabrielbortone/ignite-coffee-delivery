@@ -62,6 +62,11 @@ export const PainelPagamentoConteudoItem = styled.span`
     gap: 0.4rem;
     padding: 0.5rem;
     width: 10rem;
+    &.active {
+        border-radius: 6px;
+        border: 1px solid ${props=> props.theme['purple-dark']};
+        background: ${props=> props.theme['purple-light']};
+    }
     p {
         font-size: 0.75rem;
         font-family: ${props=> props.theme['font-primary']};

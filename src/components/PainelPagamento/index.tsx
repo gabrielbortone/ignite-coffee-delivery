@@ -1,10 +1,13 @@
 import { Bank, CreditCard, CurrencyDollar, Money } from "@phosphor-icons/react";
 import { PainelPagamentoContainer, PainelPagamentoConteudoContainer, PainelPagamentoConteudoItem, PainelPagamentoHeader, PainelPagamentoHeaderTextos } from "./styles";
 import { useTheme } from "styled-components";
+import { useContext } from "react";
+import { VendasContext } from "../../contexts/VendasContext";
 
 export default function PainelPagamento(){
     const theme = useTheme();
-    
+    const { formaPagamento, setFormaPagamento} = useContext(VendasContext);
+
     if(theme){
         return(
             <PainelPagamentoContainer>
@@ -16,15 +19,15 @@ export default function PainelPagamento(){
                     </PainelPagamentoHeaderTextos>
                 </PainelPagamentoHeader>
                 <PainelPagamentoConteudoContainer>
-                    <PainelPagamentoConteudoItem>
+                    <PainelPagamentoConteudoItem onClick={()=> {setFormaPagamento('CARTÂO DE CRÉDITO')}} className={formaPagamento === 'CARTÂO DE CRÉDITO' ? 'active' : ''}>
                         <CreditCard size={24} color={theme['purple']}/>
                         <p>CARTÃO DE CRÉDITO</p>
                     </PainelPagamentoConteudoItem>
-                    <PainelPagamentoConteudoItem>
+                    <PainelPagamentoConteudoItem onClick={()=> {setFormaPagamento('CARTÃO DE DÉBITO')}} className={formaPagamento === 'CARTÃO DE DÉBITO' ? 'active' : ''}>
                         <Bank size={24} color={theme['purple']}/>
                         <p>CARTÃO DE DÉBITO</p>
                     </PainelPagamentoConteudoItem>
-                    <PainelPagamentoConteudoItem>
+                    <PainelPagamentoConteudoItem onClick={()=> {setFormaPagamento('DINHEIRO')}} className={formaPagamento === 'DINHEIRO' ? 'active' : ''}>
                         <Money size={24} color={theme['purple']}/>
                         <p>DINHEIRO</p>
                     </PainelPagamentoConteudoItem>

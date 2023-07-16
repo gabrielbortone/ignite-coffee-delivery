@@ -1,22 +1,27 @@
 import { Minus, Plus, Trash } from "@phosphor-icons/react";
 import { useTheme } from "styled-components";
 import { CafeEscolhidoBotaoRemover, CafeEscolhidoItemContainer, CafeEscolhidoItemImagemContainer, CafeEscolhidoItemMiddleBottoesContainer, CafeEscolhidoItemMiddleContainer, CafeEscolhidoItemQuantidadeContainer, CafeEscolhidoItemQuantidadeSpan, CafeEscolhidoItemQuantidadeSpanNumero, CafeEscolhidoItemSpanPreco } from "./styles";
+import { useContext } from "react";
+import { VendasContext } from "../../../contexts/VendasContext";
 
 interface CafeEscolhidoItemProps{
     quantidade: number
-    nome: String
+    nome: string
     preco: number
     imagem: string
 }
 
 export default function CafeEscolhidoItem({quantidade, nome, preco, imagem} : CafeEscolhidoItemProps){
     const theme = useTheme();
+    const { removerDoCarrinho } = useContext(VendasContext);
     const precoFormatado: string = (preco).toLocaleString('pt-br', {
         style: 'decimal', 
         minimumIntegerDigits: 1, 
         minimumFractionDigits: 2,
         maximumFractionDigits: 2
     })
+
+    
     
     if(!theme){
         return <h1>ERROR</h1>
@@ -39,7 +44,15 @@ export default function CafeEscolhidoItem({quantidade, nome, preco, imagem} : Ca
                             <Plus size={16} color={theme['purple']}/>
                         </CafeEscolhidoItemQuantidadeSpan>
                     </CafeEscolhidoItemQuantidadeContainer>
-                    <CafeEscolhidoBotaoRemover>
+                    <CafeEscolhidoBotaoRemover onClick={(e)=> {
+                        removerDoCarrinho({
+                            titulo: nome,
+                            preco,
+                            imagem,
+                            tipoCafe: [''],
+                            descricao: ''
+                        })
+                    }}>
                         <Trash size={16} color={theme['purple']} />
                         <p>REMOVER</p>
                     </CafeEscolhidoBotaoRemover>

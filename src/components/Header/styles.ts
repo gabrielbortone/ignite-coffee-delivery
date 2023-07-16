@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import { styled } from "styled-components";
 
 export const HeaderContainer = styled.header`
@@ -36,7 +37,7 @@ export const HeaderLocalizationInfo = styled.div`
     }
 `;
 
-export const HeaderShoppingInfo = styled.div`
+export const HeaderShoppingInfo = styled(NavLink)`
     display: flex;
     align-items: center;
     justify-content: center;

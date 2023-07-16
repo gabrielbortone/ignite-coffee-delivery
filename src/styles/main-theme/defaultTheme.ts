@@ -17,4 +17,4 @@ export const defaultTheme = {
     'white': '#FFFFFF',
     'font-secondary': "'Baloo 2', cursive",
     'font-primary': "'Roboto', sans-serif"
-}
+} as const

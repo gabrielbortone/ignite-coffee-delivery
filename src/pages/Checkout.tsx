@@ -8,7 +8,7 @@ export default function Checkout(){
         <CheckoutContainer>
             <section>
                 <PainelEndereco />
-                <PainelPagamento />
+                <PainelPagamento  />
             </section>
             <PainelCafesEscolhidos />
         </CheckoutContainer>

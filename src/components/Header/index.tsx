@@ -21,7 +21,7 @@ export default function Header(){
                             <p>Porto Alegre, RS</p>
                         </span>
                     </HeaderLocalizationInfo>
-                    <HeaderShoppingInfo>
+                    <HeaderShoppingInfo to="/checkout">
                         <div>                          
                             <ShoppingCart size={26} color={theme['yellow-dark']}/>
                         </div>

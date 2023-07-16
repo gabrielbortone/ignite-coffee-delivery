@@ -68,6 +68,7 @@ export const CafeEscolhidoBotaoRemover = styled.span`
     height: 2rem;
     padding-left: 0.2rem;
     padding-right: 0.2rem;
+    cursor: pointer;
     p {
         color: ${props=> props.theme['base-text']};
         font-size: 0.75rem;
