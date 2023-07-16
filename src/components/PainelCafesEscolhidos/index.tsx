@@ -1,14 +1,21 @@
 import CafeEscolhidoItem from "./CafeEscolhido";
 import { PainelCafesEscolhidosFooter, PainelCafesEscolhidosFooterSpan, PainelCafesEscolhidosFooterSpanTotal, PainelCafesEscolhidosHeaderTitulo, PainelCafesEscolhidosItem, PainelCafesEscolhidosMainContainer, PainelCafesEscolhidosMainSection } from "./styles";
-import urlCafeTradicional from '../../assets/imgs-cafes/expresso.png';
 import { BotaoConfirmarPedidoCheckout } from "../PainelEndereco/styles";
 import { useContext } from "react";
 import { VendasContext } from "../../contexts/VendasContext";
+import { useNavigate } from "react-router-dom";
 
 export default function PainelCafesEscolhidos(){
 
-    const { carrinho, totalItens, totalFinal, taxaEntrega } = useContext(VendasContext);
+    const { carrinho, totalItens, totalFinal, taxaEntrega, finalizarPedido, enderecoEntrega } = useContext(VendasContext);
+    const navigate = useNavigate(); 
 
+    function handleCheckoutFinish(){
+        if(enderecoEntrega){
+            finalizarPedido(enderecoEntrega);
+            navigate('/pedido-confirmado');
+        }
+    }
 
     return (
         <PainelCafesEscolhidosMainContainer>
@@ -17,7 +24,8 @@ export default function PainelCafesEscolhidos(){
                 <PainelCafesEscolhidosItem>
 
                     {carrinho.map((carrinhoItem)=> {
-                        return <CafeEscolhidoItem key={carrinhoItem.produto?.titulo} nome={carrinhoItem.produto?.titulo} preco={carrinhoItem.produto?.preco} 
+                        return <CafeEscolhidoItem key={carrinhoItem.produto?.titulo} nome={carrinhoItem.produto?.titulo} 
+                        preco={carrinhoItem.produto?.preco} 
                         imagem={carrinhoItem.produto?.imagem} quantidade={carrinhoItem.quantidade} />
                     })}
                 </PainelCafesEscolhidosItem>
@@ -34,7 +42,7 @@ export default function PainelCafesEscolhidos(){
                         <p>Total</p>
                         <p>{totalFinal.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</p>
                     </PainelCafesEscolhidosFooterSpanTotal>
-                    <BotaoConfirmarPedidoCheckout>
+                    <BotaoConfirmarPedidoCheckout onClick={handleCheckoutFinish} disabled={totalItens == 0}>
                         Confirmar Pedido
                     </BotaoConfirmarPedidoCheckout>
                 </PainelCafesEscolhidosFooter>

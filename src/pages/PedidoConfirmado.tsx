@@ -2,8 +2,11 @@ import { CurrencyDollar, MapPin, Timer } from '@phosphor-icons/react';
 import ilustracao from '../assets/Illustration.png';
 import { PedidoConfirmadoContainer, PedidoConfirmadoFundo, PedidoConfirmadoInfoContainer, PedidoConfirmadoInfoDinheiro, PedidoConfirmadoInfoMapa, PedidoConfirmadoInfoParagrafo, PedidoConfirmadoInfoTempo, PedidoConfirmadoParagrafo, PedidoConfirmadoSection, PedidoConfirmadoTitulo } from './styles/pedidoconfirmadostyles';
 import { useTheme } from 'styled-components';
+import { useContext } from 'react';
+import { VendasContext } from '../contexts/VendasContext';
 
 export default function PedidoConfirmado(){
+    const {enderecoEntrega, formaPagamento} = useContext(VendasContext);
     const theme = useTheme();
     if(!theme){
         return <h1>ERROR</h1>
@@ -20,8 +23,8 @@ export default function PedidoConfirmado(){
                                 <MapPin size={24} color={theme['white']} />
                             </PedidoConfirmadoInfoMapa>
                             <span>
-                                <PedidoConfirmadoInfoParagrafo>Entrega em Rua João Daniel Martinelli, 102</PedidoConfirmadoInfoParagrafo>
-                                <PedidoConfirmadoInfoParagrafo>Farrapos - Porto Alegre, RS</PedidoConfirmadoInfoParagrafo>
+                                <PedidoConfirmadoInfoParagrafo>Entrega em {`${enderecoEntrega?.rua} ${enderecoEntrega?.complemento}, ${enderecoEntrega?.numero}`}</PedidoConfirmadoInfoParagrafo>
+                                <PedidoConfirmadoInfoParagrafo>{`${enderecoEntrega?.bairro} - ${enderecoEntrega?.cidade}, ${enderecoEntrega?.uf} - ${enderecoEntrega?.cep}`}</PedidoConfirmadoInfoParagrafo>
                             </span>
                         </PedidoConfirmadoInfoContainer>
                         <PedidoConfirmadoInfoContainer>
@@ -39,7 +42,7 @@ export default function PedidoConfirmado(){
                             </PedidoConfirmadoInfoDinheiro>
                             <span>
                                 <PedidoConfirmadoInfoParagrafo>Pagamento na entrega</PedidoConfirmadoInfoParagrafo>
-                                <PedidoConfirmadoInfoParagrafo><strong>Cartão de Crédito</strong></PedidoConfirmadoInfoParagrafo>  
+                                <PedidoConfirmadoInfoParagrafo><strong>{formaPagamento}</strong></PedidoConfirmadoInfoParagrafo>  
                             </span>
                         </PedidoConfirmadoInfoContainer>
                     </PedidoConfirmadoFundo>

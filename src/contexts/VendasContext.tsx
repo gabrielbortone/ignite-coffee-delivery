@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useCallback, useEffect, useState } from "react"
+import { ReactNode, createContext, useEffect, useState } from "react"
 
 export interface CafeCarrinho {
     titulo: string
@@ -44,6 +44,7 @@ interface VendasContextType {
     totalItens: number;
     taxaEntrega: number;
     carrinho: CarrinhoItem[];
+    alterarQuantidade: (titulo: string, numero: number) => void;
 }
 
 interface VendasProviderProps {
@@ -71,6 +72,9 @@ export function VendasContextProvider({children}: VendasProviderProps){
         setTotalFinal(totalItens +taxaEntrega);
     }, [totalItens])
 
+    useEffect(()=> {
+        setQuantidadeItens(carrinho.length);
+    },[carrinho])
 
 
     function adicionarNoCarrinho(cafe: CafeCarrinho, quantidade: number){
@@ -87,7 +91,6 @@ export function VendasContextProvider({children}: VendasProviderProps){
         }
 
         setCarrinho((state) => [...state, novoItem]);
-        setQuantidadeItens(carrinho.length+1);
     }
 
     function removerDoCarrinho(cafe: CafeCarrinho){
@@ -95,7 +98,6 @@ export function VendasContextProvider({children}: VendasProviderProps){
             return item.produto.titulo !== cafe.titulo
         })
         setCarrinho(novaLista)
-        setQuantidadeItens(carrinho.length+1);
     }
 
     function obterPedidoAtual(){
@@ -110,6 +112,16 @@ export function VendasContextProvider({children}: VendasProviderProps){
         });
     }
 
+    function alterarQuantidade(titulo: string, numero: number){
+
+        setCarrinho(carrinho.filter((item)=> {
+            if(item.produto.titulo === titulo){
+                item.quantidade += numero;
+            }
+            return item;
+        }))
+    }
+
     function atribuirEndereco(endereco: EnderecoEntrega){
         setEnderecoEntrega(endereco);
     }
@@ -117,7 +129,7 @@ export function VendasContextProvider({children}: VendasProviderProps){
     return (
         <VendasContext.Provider value={{adicionarNoCarrinho, removerDoCarrinho, obterPedidoAtual, finalizarPedido, 
             quantidadeItens, enderecoEntrega,
-         atribuirEndereco, formaPagamento, setFormaPagamento, totalFinal, totalItens, taxaEntrega, carrinho}}>
+         atribuirEndereco, formaPagamento, setFormaPagamento, totalFinal, totalItens, taxaEntrega, carrinho, alterarQuantidade}}>
             {children}
         </VendasContext.Provider>
     )

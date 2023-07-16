@@ -38,6 +38,7 @@ export const CafeEscolhidoItemQuantidadeSpan = styled.span`
     height: 2rem;
     padding: 0rem 0.1rem;
     gap: 0;
+    cursor: pointer;
 `;
 
 export const CafeEscolhidoItemQuantidadeSpanNumero = styled.span`

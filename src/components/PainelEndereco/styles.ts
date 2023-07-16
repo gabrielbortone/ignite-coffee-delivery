@@ -93,4 +93,5 @@ export const BotaoConfirmarPedidoCheckout = styled.button`
     font-family: ${props=> props.theme['font-primary']};
     padding: 0.7rem 0.2rem;
     margin: 1rem 1.5rem;
+    cursor: pointer;
 `;

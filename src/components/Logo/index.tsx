@@ -3,10 +3,10 @@ import { LogoContainer } from './styles';
 
 export default function Logo(){
     return (
-        <LogoContainer>
-            <a href='#'>
+        <LogoContainer to="/">
+            <span>
                 <img src={imgLogo} />
-            </a>
+            </span>
         </LogoContainer>
     )
 }

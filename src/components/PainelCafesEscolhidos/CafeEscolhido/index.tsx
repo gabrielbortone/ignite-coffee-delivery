@@ -13,7 +13,11 @@ interface CafeEscolhidoItemProps{
 
 export default function CafeEscolhidoItem({quantidade, nome, preco, imagem} : CafeEscolhidoItemProps){
     const theme = useTheme();
-    const { removerDoCarrinho } = useContext(VendasContext);
+    const { removerDoCarrinho, alterarQuantidade } = useContext(VendasContext);
+
+
+
+
     const precoFormatado: string = (preco).toLocaleString('pt-br', {
         style: 'decimal', 
         minimumIntegerDigits: 1, 
@@ -36,15 +40,30 @@ export default function CafeEscolhidoItem({quantidade, nome, preco, imagem} : Ca
                 <h3>{nome}</h3>
                 <CafeEscolhidoItemMiddleBottoesContainer>
                     <CafeEscolhidoItemQuantidadeContainer>
-                        <CafeEscolhidoItemQuantidadeSpan>
+                        <CafeEscolhidoItemQuantidadeSpan onClick={()=> 
+                        {
+                            if(quantidade <= 1){
+                                quantidade =1;
+                            }
+                            else{
+                                alterarQuantidade(nome, -1)
+                            }
+                        }}>
                             <Minus size={16} color={theme['purple']}/>
                         </CafeEscolhidoItemQuantidadeSpan>
                         <CafeEscolhidoItemQuantidadeSpanNumero>{quantidade}</CafeEscolhidoItemQuantidadeSpanNumero>
-                        <CafeEscolhidoItemQuantidadeSpan>
+                        <CafeEscolhidoItemQuantidadeSpan onClick={()=> {
+                            if(quantidade > 9){
+                                quantidade =9;
+                            }
+                            else{
+                                alterarQuantidade(nome, 1)
+                            }
+                        }}>
                             <Plus size={16} color={theme['purple']}/>
                         </CafeEscolhidoItemQuantidadeSpan>
                     </CafeEscolhidoItemQuantidadeContainer>
-                    <CafeEscolhidoBotaoRemover onClick={(e)=> {
+                    <CafeEscolhidoBotaoRemover onClick={()=> {
                         removerDoCarrinho({
                             titulo: nome,
                             preco,
